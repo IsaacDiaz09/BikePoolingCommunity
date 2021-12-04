@@ -31,3 +31,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+Wallet_OracleDB/cwallet.sso
+Wallet_OracleDB/ewallet.p12
+Wallet_OracleDB/keystore.jks
+Wallet_OracleDB/ojdbc.properties
+Wallet_OracleDB/README
+Wallet_OracleDB/sqlnet.ora
+Wallet_OracleDB/tnsnames.ora
+Wallet_OracleDB/truststore.jks
