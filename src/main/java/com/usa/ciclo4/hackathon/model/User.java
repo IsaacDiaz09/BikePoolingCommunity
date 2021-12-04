@@ -28,4 +28,14 @@ public class User {
 	
 	@Column(length=60)
 	private String password;
+	
+	private Integer age;
+
+	private String cellPhone;
+	
+	private String gender;
+	
+	private String address;
+	
+	private String socialMedia;
 }
