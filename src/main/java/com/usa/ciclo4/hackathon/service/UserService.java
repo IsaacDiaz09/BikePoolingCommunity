@@ -33,14 +33,14 @@ public class UserService {
 		return repo.getAll();
 	}
 
-	public User createUser(User user) {
+	public User createUser(User user) throws Exception {
 		if (isEmailNotInUse(user.getEmail())) {
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
 			String encryptedPassword = encoder.encode(user.getPassword());
 			user.setPassword(encryptedPassword);
 			return repo.save(user);
 		}
-		return new User();
+		throw new Exception("El email ya se encuentra en uso");
 	}
 
 	public User updateUser(User user) {
