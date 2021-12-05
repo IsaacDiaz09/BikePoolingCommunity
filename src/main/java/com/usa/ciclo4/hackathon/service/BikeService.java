@@ -70,7 +70,7 @@ public class BikeService {
 
 	}
 
-	public boolean delete(Integer id) {
+	public boolean deleteBike(Integer id) {
 		return repo.delete(id);
 	}
 }

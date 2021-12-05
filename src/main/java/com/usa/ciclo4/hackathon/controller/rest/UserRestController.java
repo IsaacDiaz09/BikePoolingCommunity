@@ -9,17 +9,51 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.usa.ciclo4.hackathon.model.User;
 import com.usa.ciclo4.hackathon.service.UserService;
+import java.util.Optional;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 @RestController
-@RequestMapping("/api/users/")
+@RequestMapping("/api/user/")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class UserRestController {
 
-	@Autowired
-	private UserService service;
+    @Autowired
+    private UserService service;
 
-	@GetMapping("all")
-	public List<User> getAll() {
-		return service.getAll();
-	}
+    @GetMapping("all")
+    public List<User> getAll() {
+        return service.getAll();
+    }
 
+    @GetMapping("/{id}")
+    public Optional<User> getOptional(@PathVariable("id") int idUser) {
+
+        return service.getById(idUser);
+    }
+
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User save(@RequestBody User user) {
+        return service.createUser(user);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User update(@RequestBody User user) {
+        return service.updateUser(user);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int idUser) {
+        return service.deleteUser(idUser);
+    }
 }
