@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -42,6 +43,8 @@ public class User {
 	private String address;
 	
 	private String socialMedia;
+        
+        //private List<Bike> listBike;
 	
 	// relacion 1-muchos
 	//private List<User> friends;
