@@ -35,11 +35,11 @@ public class RaitingService {
 		return repo.getAll();
 	}
 
-	public Raiting createBike(Raiting raiting) {		
+	public Raiting createRaiting(Raiting raiting) {		
 		return repo.save(raiting);
 	}
 
-	public Raiting updateBike(Raiting raiting) {
+	public Raiting updateRaiting(Raiting raiting) {
 		if (repo.getById(raiting.getIdRaiting()).isPresent()) {
 			Raiting raitingUpdate = repo.getById(raiting.getIdRaiting()).get();
 
@@ -62,7 +62,7 @@ public class RaitingService {
 
 	}
 
-	public boolean delete(Integer id) {
+	public boolean deleteRaiting(Integer id) {
 		return repo.delete(id);
 	}
 }

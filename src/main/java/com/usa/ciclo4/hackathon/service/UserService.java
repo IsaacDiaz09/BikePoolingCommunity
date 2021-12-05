@@ -14,7 +14,6 @@ import com.usa.ciclo4.hackathon.repository.UserRepository;
 
 @Service
 public class UserService {
-
 	@Autowired
 	private UserRepository repo;
 
@@ -33,14 +32,14 @@ public class UserService {
 		return repo.getAll();
 	}
 
-	public User createUser(User user) throws Exception {
+	public User createUser(User user) {
 		if (isEmailNotInUse(user.getEmail())) {
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
 			String encryptedPassword = encoder.encode(user.getPassword());
 			user.setPassword(encryptedPassword);
 			return repo.save(user);
 		}
-		throw new Exception("El email ya se encuentra en uso");
+		return new User();
 	}
 
 	public User updateUser(User user) {
@@ -88,12 +87,11 @@ public class UserService {
 
 	}
 
-	public boolean delete(Integer id) {
+	public boolean deleteUser(Integer id) {
 		return repo.delete(id);
 	}
 
 	private boolean isEmailNotInUse(String email) {
-		return crudRepo.findByEmail(email).isEmpty();
+        return crudRepo.findByEmail(email).isEmpty();
 	}
-
 }

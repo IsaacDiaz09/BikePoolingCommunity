@@ -42,12 +42,7 @@ public class UserRestController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public User save(@RequestBody User user) {
-        try {
-			return service.createUser(user);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        return new User();
+        return service.createUser(user);
     }
 
     @PutMapping("/update")
