@@ -5,7 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>to-do</title>
+	<title>Home</title>
 	<link rel="icon" type="image/png" th:href="@{/icons/favicon.png}" />
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -19,7 +19,41 @@
 </head>
 
 <body>
-<h1>to-do</h1>
+	<div class="container">
+
+		<div class="row h-100">
+			<div class="col-sm-12 col-md-8 col-lg-6 mx-auto d-table h-100 w-100">
+				<div class="d-table-cell align-middle">
+
+					<div class="card w-100">
+						<div class="navbar navbar-light justify-content-between">
+							<a href="/login" class="btn btn-primary" style="margin-left: 5%;">Iniciar sesion</a>
+							<a href="/register" style="margin-right: 5%;" class="btn btn-primary">Quiero registrarme</a>
+						</div>
+					</div>
+
+					<div class="card">
+						<img class="card-img-top" width="80%" th:src="@{/img/bicicleta.jpg}" alt="Bike img">
+						<div class="card-body">
+							<h5 class="card-title">Proyecto BikePoolingCommunity 2021</h5>
+							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+								laborum, voluptatem ex nisi repudiandae iusto nostrum, minus neque voluptate quidem
+								veritatis officiis beatae. Dolorum consequuntur saepe est, voluptate laudantium
+								obcaecati.</p>
+							<hr />
+							<a class="card-text text-muted" target="_blank"
+								href="https://docs.google.com/document/d/1dN5Bc12rJ-ORAPCa1qnZIPExqHeCIB0V/edit">
+								Documentación
+								del Proyecto</a>
+							<br>
+							<a class="card-text text-muted" target="_blank" href="#">Conoce tus derechos y deberes como
+								usuario</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
