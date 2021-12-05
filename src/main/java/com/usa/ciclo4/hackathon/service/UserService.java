@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.usa.ciclo4.hackathon.model.User;
+import com.usa.ciclo4.hackathon.repository.IUserRepository;
 import com.usa.ciclo4.hackathon.repository.UserRepository;
 
 @Service
@@ -16,6 +17,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository repo;
+
+	@Autowired
+	private IUserRepository crudRepo;
 
 	public boolean deleteAll() {
 		return repo.deleteAll();
@@ -30,10 +34,13 @@ public class UserService {
 	}
 
 	public User createUser(User user) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
-		String encryptedPassword = encoder.encode(user.getPassword());
-		user.setPassword(encryptedPassword);
-		return repo.save(user);
+		if (isEmailNotInUse(user.getEmail())) {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
+			String encryptedPassword = encoder.encode(user.getPassword());
+			user.setPassword(encryptedPassword);
+			return repo.save(user);
+		}
+		return new User();
 	}
 
 	public User updateUser(User user) {
@@ -83,6 +90,10 @@ public class UserService {
 
 	public boolean delete(Integer id) {
 		return repo.delete(id);
+	}
+
+	private boolean isEmailNotInUse(String email) {
+		return crudRepo.findByEmail(email).isEmpty();
 	}
 
 }

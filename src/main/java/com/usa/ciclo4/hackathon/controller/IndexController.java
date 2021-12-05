@@ -19,4 +19,9 @@ public class IndexController {
 	public String register() {
 		return "vistas/register";
 	}
+	
+	@GetMapping("/home")
+	public String homePage() {
+		return "vistas/home";
+	}
 }

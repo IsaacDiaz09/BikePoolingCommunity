@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +27,7 @@ public class User {
 	
 	private String name;
 	
+	@Column(unique=true)
 	private String email;
 	
 	@Column(length=60)
