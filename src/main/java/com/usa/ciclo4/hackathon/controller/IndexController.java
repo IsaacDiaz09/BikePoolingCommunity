@@ -24,6 +24,32 @@ public class IndexController {
 	@Autowired
 	private UserService service;
 
+<<<<<<< HEAD
+    @GetMapping("/")
+    public String index() {
+        return "vistas/index";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "vistas/login";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "vistas/register";
+    }
+
+    @GetMapping("/home")
+    public String homePage() {
+        return "vistas/home";
+    }
+
+    @GetMapping("/community")
+    public String communityPage() {
+        return "vistas/community";
+    }
+=======
 	@GetMapping("/")
 	public String index() {
 		return "vistas/index";
@@ -79,4 +105,5 @@ public class IndexController {
 		model.addAttribute("registerSuccess", true);
 		return "vistas/login";
 	}
+>>>>>>> 480bafd64ce5edebee2f8973e275a4a9bb2c00e5
 }
