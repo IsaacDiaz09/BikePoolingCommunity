@@ -22,16 +22,17 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "community")
-public class Community implements Serializable {
+@Table(name = "request")
+public class Request implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCommunity;
+    private Integer idRequest;
     
-    private String typeCommunity;
+    private String typeRequest;
+    
+    private String condition;
     
     
-                       
 
 }

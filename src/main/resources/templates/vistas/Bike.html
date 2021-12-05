@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BikePooling Community</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body style="  background-color: rgb(241, 251, 255);">
+    <header th:replace="plantillas/plantilla-header :: navBar">
+    </header>
+
+
+    <div class="formB">
+
+        <div class="formBike">
+            <h4>Bicicletas</h4>
+
+            <label>Número de serial</label><br>
+            <input type="number" id="serialNumber"><br>
+
+            <label>Condición</label><br>
+            <input type="text" id="condicion"><br>
+
+            <label>Marca</label><br>
+            <input type="text" id="marca"><br>
+
+            <label>Categoria</label>
+            <select id="select-category"></select>
+            <script type="text/javascript">
+                window.onload = autoInicioCategoria();
+            </script>
+
+            <label>Estado</label>
+            <select id="select-category"></select>
+            <script type="text/javascript">
+                window.onload = autoInicioCategoria();
+            </script> <br>
+        </div>
+
+
+        <div class="formBikeImg">
+            <img src="https://www.lenimp.com/galeriasproductos/macro_gal_venzo_1568294762.jpg">
+        </div>
+
+
+        <div class="formBikeButtons">
+
+            <button onclick="crearBici()">Crear</button>
+
+            <button onclick="actualizarBici()">Actualizar</button>
+
+            <button onclick="eliminarBici()">Eliminar</button>
+        </div>
+    </div>
+
+    <br> <br>
+    <label>Mis bicicletas</label>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+
+                <th scope="col">Serial</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actualizar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody id="tablaBike">
+            <tr>
+        </tbody>
+    </table>
+
+    <br> <br>
+    <label>Historico</label>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Tipo</th>
+                <th scope="col">Serial</th>
+                <th scope="col">Condición</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Propietario</th>
+                <th scope="col">Uso</th>
+                <th scope="col">Fecha de entrega</th>
+                <th scope="col">Mensaje</th>
+                <th scope="col">Usuario</th>
+            </tr>
+        </thead>
+        <tbody id="tablaBike">
+            <tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

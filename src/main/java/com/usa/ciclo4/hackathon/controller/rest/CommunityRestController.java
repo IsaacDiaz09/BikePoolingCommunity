@@ -37,9 +37,9 @@ public class CommunityRestController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Community> getOptional(@PathVariable("id") int idRaiting) {
+    public Optional<Community> getOptional(@PathVariable("id") int idCommunity) {
 
-        return service.getById(idRaiting);
+        return service.getById(idCommunity);
     }
 
     @PostMapping("/save")
