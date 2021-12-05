@@ -8,11 +8,13 @@ import com.usa.ciclo4.hackathon.model.Community;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author HP USER
  */
+@Repository
 public class CommunityRepository {
     
     @Autowired
