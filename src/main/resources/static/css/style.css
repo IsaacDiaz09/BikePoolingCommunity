@@ -30,3 +30,76 @@ body {
 .letra-gris {
   color:gray;
 }
+
+/*Bike----------------------------------------*/
+.formB{
+    margin-right: 60%;
+    margin-left: 50px; 
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; 
+    border:solid 2px #2fc709;
+    
+    
+}
+.formB h4 {
+    font-family: sans-serif;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: rgb(0, 0, 0);
+  }
+
+.formBike {
+    width: 40%;
+    max-width: 240px;
+    justify-content: center; 
+    padding: 20px;
+  }
+
+
+.formBike label {
+    font-family: sans-serif;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+}
+
+.formBike input  {
+    margin-top: 3px;
+    margin-bottom: 17px;
+}
+.formBikeButtons{
+   
+    text-align: center; 
+    width: 100%;
+} 
+
+.formBikeButtons button {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0.5em 1em;
+    border: #092327 1px solid;
+    border-radius: 50px;
+    background: #092327;
+    color: white;
+    cursor: pointer;
+  }
+.formBike button:hover {
+    background: #0077ff;
+}
+
+.formBike select{
+    margin-right: 20px;
+}
+
+.formBikeImg  {
+    padding-left: 20px;
+}
+.formBikeImg img {
+    width: 230px;
+    /*height: 150px;*/
+}
+
+
+

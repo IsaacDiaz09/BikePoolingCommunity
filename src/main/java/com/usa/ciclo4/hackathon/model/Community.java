@@ -4,6 +4,7 @@
  */
 package com.usa.ciclo4.hackathon.model;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "community")
-public class Community {
+public class Community implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
