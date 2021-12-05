@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="users")
+@JsonIgnoreProperties({"id","password"})
 public class User {
 
 	@Id
@@ -33,9 +36,13 @@ public class User {
 
 	private String cellPhone;
 	
+	@Column(length=1)
 	private String gender;
 	
 	private String address;
 	
 	private String socialMedia;
+	
+	// relacion 1-muchos
+	//private List<User> friends;
 }
