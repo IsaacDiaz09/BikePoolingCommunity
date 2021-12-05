@@ -4,9 +4,8 @@
  */
 package com.usa.ciclo4.hackathon.controller.rest;
 
-import com.usa.ciclo4.hackathon.model.Raiting;
-import com.usa.ciclo4.hackathon.model.User;
-import com.usa.ciclo4.hackathon.service.RaitingService;
+import com.usa.ciclo4.hackathon.model.Community;
+import com.usa.ciclo4.hackathon.service.CommunityService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,38 +25,39 @@ import org.springframework.web.bind.annotation.RestController;
  * @author HP USER
  */
 @RestController
-@RequestMapping("/api/raiting")
-public class RaitingRestController {
-
+@RequestMapping("/api/community")
+public class CommunityRestController {
+    
     @Autowired
-    private RaitingService service;
+    private CommunityService service;
 
     @GetMapping("all")
-    public List<Raiting> getAll() {
+    public List<Community> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Raiting> getOptional(@PathVariable("id") int idRaiting) {
+    public Optional<Community> getOptional(@PathVariable("id") int idRaiting) {
 
         return service.getById(idRaiting);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Raiting save(@RequestBody Raiting raiting) {
-        return service.createRaiting(raiting);
+    public Community save(@RequestBody Community community) {
+        return service.createCommunity(community);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Raiting update(@RequestBody Raiting raiting) {
-        return service.updateRaiting(raiting);
+    public Community update(@RequestBody Community community) {
+        return service.updateCommunity(community);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int idRaiting) {
-        return service.deleteRaiting(idRaiting);
+    public boolean delete(@PathVariable("id") int idCommunity) {
+        return service.deleteCommunity(idCommunity);
     }
+    
 }

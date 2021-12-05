@@ -14,86 +14,84 @@ import com.usa.ciclo4.hackathon.repository.UserRepository;
 
 @Service
 public class UserService {
+	@Autowired
+	private UserRepository repo;
 
-    @Autowired
-    private UserRepository repo;
+	@Autowired
+	private IUserRepository crudRepo;
 
-    @Autowired
-    private IUserRepository crudRepo;
+	public boolean deleteAll() {
+		return repo.deleteAll();
+	}
 
-    public boolean deleteAll() {
-        return repo.deleteAll();
-    }
+	public Optional<User> getById(Integer id) {
+		return repo.getById(id);
+	}
 
-    public Optional<User> getById(Integer id) {
-        return repo.getById(id);
-    }
+	public List<User> getAll() {
+		return repo.getAll();
+	}
 
-    public List<User> getAll() {
-        return repo.getAll();
-    }
+	public User createUser(User user) throws Exception {
+		if (isEmailNotInUse(user.getEmail())) {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
+			String encryptedPassword = encoder.encode(user.getPassword());
+			user.setPassword(encryptedPassword);
+			return repo.save(user);
+		}
+		throw new Exception("El email ya esta en uso");
+	}
 
-    public User createUser(User user) {
-        if (isEmailNotInUse(user.getEmail())) {
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
-            String encryptedPassword = encoder.encode(user.getPassword());
-            user.setPassword(encryptedPassword);
-            return repo.save(user);
-        }
-        return new User();
-    }
+	public User updateUser(User user) {
+		if (repo.getById(user.getId()).isPresent()) {
+			User userUpdate = repo.getById(user.getId()).get();
 
-    public User updateUser(User user) {
-        if (repo.getById(user.getId()).isPresent()) {
-            User userUpdate = repo.getById(user.getId()).get();
+			if (!Objects.isNull(user.getName())) {
+				userUpdate.setName(user.getName());
+			}
 
-            if (!Objects.isNull(user.getName())) {
-                userUpdate.setName(user.getName());
-            }
+			if (!Objects.isNull(user.getEmail())) {
+				userUpdate.setEmail(user.getEmail());
+			}
 
-            if (!Objects.isNull(user.getEmail())) {
-                userUpdate.setEmail(user.getEmail());
-            }
+			if (!Objects.isNull(user.getPassword())) {
+				BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
+				String encryptedPassword = encoder.encode(user.getPassword());
+				user.setPassword(encryptedPassword);
+				userUpdate.setPassword(encryptedPassword);
+			}
 
-            if (!Objects.isNull(user.getPassword())) {
-                BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
-                String encryptedPassword = encoder.encode(user.getPassword());
-                user.setPassword(encryptedPassword);
-                userUpdate.setPassword(encryptedPassword);
-            }
+			if (!Objects.isNull(user.getAge())) {
+				userUpdate.setAge(user.getAge());
+			}
 
-            if (!Objects.isNull(user.getAge())) {
-                userUpdate.setAge(user.getAge());
-            }
+			if (!Objects.isNull(user.getCellPhone())) {
+				userUpdate.setCellPhone(user.getCellPhone());
+			}
 
-            if (!Objects.isNull(user.getCellPhone())) {
-                userUpdate.setCellPhone(user.getCellPhone());
-            }
+			if (!Objects.isNull(user.getGender())) {
+				userUpdate.setGender(user.getGender());
+			}
 
-            if (!Objects.isNull(user.getGender())) {
-                userUpdate.setGender(user.getGender());
-            }
+			if (!Objects.isNull(user.getAddress())) {
+				userUpdate.setGender(user.getAddress());
+			}
 
-            if (!Objects.isNull(user.getAddress())) {
-                userUpdate.setGender(user.getAddress());
-            }
+			if (!Objects.isNull(user.getSocialMedia())) {
+				userUpdate.setSocialMedia(user.getSocialMedia());
+			}
 
-            if (!Objects.isNull(user.getSocialMedia())) {
-                userUpdate.setSocialMedia(user.getSocialMedia());
-            }
+			return repo.save(userUpdate);
+		}
+		return new User();
 
-            return repo.save(userUpdate);
-        }
-        return new User();
+	}
 
-    }
+	public boolean deleteUser(Integer id) {
+		return repo.delete(id);
+	}
 
-    public boolean deleteUser(Integer id) {
-        return repo.delete(id);
-    }
-
-    private boolean isEmailNotInUse(String email) {
-        return crudRepo.findByEmail(email).isEmpty();
-    }
-
+	private boolean isEmailNotInUse(String email) {
+		return crudRepo.findByEmail(email).isEmpty();
+	}
 }
