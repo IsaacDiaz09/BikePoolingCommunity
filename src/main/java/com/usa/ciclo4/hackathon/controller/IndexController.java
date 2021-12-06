@@ -59,6 +59,11 @@ public class IndexController {
         return "vistas/bike";
     }
 
+    @GetMapping("/community")
+    public String community() {
+        return "vistas/community";
+    }
+
     @PostMapping(path = "/register", consumes = "application/x-www-form-urlencoded")
     public String validaRegistro(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
 
