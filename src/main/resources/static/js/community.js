@@ -7,7 +7,7 @@ function getCommunity() {
         success: function (resultCommunity) {
             console.log(resultCommunity);
             boardCommunity(resultCommunity);
-            c
+            
         }
     });
 }
@@ -21,9 +21,12 @@ function boardCommunity(resultCommunity) {
         tableCommunity += "<td>" + resultCommunity[i].nickCommunity + "</td>";
         tableCommunity += "<td>" + resultCommunity[i].sectorCommunity + "</td>";
         tableCommunity += "<td>" + resultCommunity[i].nameCommunity + "</td>";
-        tableCommunity += "<td><button onclick='separarComunidad(" + resultCommunity[i].nameCommunity + ")'>Ver Usuarios</button>";
+        tableCommunity += "<td>" + <button onclick='separarComunidad(" + +resultCommunity[i].idCommunity + ")'>Ver Usuarios</button>"
+        //tableCommunity += "<td>" + <input type="button" onclick="location.href = 'bike.html'">Ver Usuarios</button>"
+        //tableCommunity += "<td>" +<button onclick="window.location.href = 'bike.html'">Ver Usuarios</button>"
+        //tableCommunity += "<td>" +<input type="button" onclick="window.location = 'bike.html';">
         tableCommunity += "<td><button onclick='cargarDatosCommunity(" + resultCommunity[i].idCommunity + ")'>Actualizar</button>";
-        
+
         tableCommunity += "</tr>";
     }
     tableCommunity += "</table>";
@@ -158,9 +161,12 @@ function cargarDatosCommunity(id) {
 
         }
     });
-    
-    function separarComunidad (id){
-        
+
+    function separarComunidad(id) {
+
+        <script type="text/javascript">
+        window.location.href = "http://localhost:8080/profile";
+        </script>
         
     }
 }
