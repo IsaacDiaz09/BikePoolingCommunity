@@ -1,5 +1,4 @@
-alert("hola");
-console.log("javascript");
+
 /*------------GET-------------------*/
 function getBike() {
     $.ajax({
@@ -17,6 +16,7 @@ function boardBike(resultBike) {
     let tableBike = "<table>";
     for (i = 0; i < resultBike.length; i++) {
         tableBike += "<tr>";
+        tableBike += "<td>" + resultBike[i].idBike + "</td>";
         tableBike += "<td>" + resultBike[i].serialNumber + "</td>";
         tableBike += "<td>" + resultBike[i].status + "</td>";
         tableBike += "<td><button onclick='cargarDatosBike(" + resultBike[i].idBike + ")'>Actualizar</button>";
@@ -90,12 +90,12 @@ function borrarBike(idElemento) {
 }
 /*------------PUT-------------------*/
 function actualizarBike(idElemento) {
-
+    
 //    if ($("#serialNumber").val().length == 0 || $("#brand").val().length == 0 || $("#image").val().length == 0 || $("#condition").val().length == 0) {
 //        alert("Todos los campos son obligatorios")
 //    } else {
         let elemento = {
-            id: idElemento,
+            idBike: $("#id").val(),
             serialNumber: $("#serialNumber").val(),
             status: $("#status").val(),
             brand: $("#brand").val(),
@@ -117,16 +117,13 @@ function actualizarBike(idElemento) {
             success: function (response) {
                 console.log(response);
                 $("#tablaBike1").empty();
-                listarSkate();
                 alert("se ha Actualizado Correctamente!")
+                getBike();
 
                 //Limpiar Campos
                 $("#serialNumber").val("");
                 $("#brand") .val("");
                 $("#condition").val("");
-
-
-
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert("No se Actualizo Correctamente!")
@@ -147,11 +144,12 @@ function cargarDatosBike(id) {
             var item = response;
 
 
+            $("#id").val(item.idBike);
             $("#serialNumber").val(item.serialNumber);
             $("#status").val(item.status);
-            $("#brand").val(item.name);
-            $("#image").val(item.brand);
-            $("#condition").val(item.year);
+            $("#brand").val(item.brand);
+            $("#image").val(item.image);
+            $("#condition").val(item.condition);
             $("#category").val(item.category);
             
         },

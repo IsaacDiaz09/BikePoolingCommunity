@@ -43,6 +43,8 @@ public class Bike {
     private String image;
     
     private String condition;
+    
+    private String category;
      
     
    // private List<Raiting> listRaiting;
