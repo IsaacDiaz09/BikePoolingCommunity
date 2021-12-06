@@ -8,7 +8,7 @@ function getBike() {
         datatype: "JSON",
         success: function (resultBike) {
             console.log(resultBike);
-            boardCategory(resultBike);
+            boardBike(resultBike);
         }
     });
 }
@@ -19,7 +19,7 @@ function boardBike(resultBike) {
         tableBike += "<tr>";
         tableBike += "<td>" + resultBike[i].serialNumber + "</td>";
         tableBike += "<td>" + resultBike[i].status + "</td>";
-        tableBike += "<td><button onclick='actualizarBike(" + resultBike[i].idBike + ")'>Actualizar</button>";
+        tableBike += "<td><button onclick='cargarDatosBike(" + resultBike[i].idBike + ")'>Actualizar</button>";
         tableBike += "<td><button onclick='borrarBike(" + resultBike[i].idBike + ")'>Borrar</button>";
         tableBike += "</tr>";
     }
@@ -28,7 +28,8 @@ function boardBike(resultBike) {
 }
 /*------------POST-------------------*/
 function postBike() {
-    if ($("#serialNumber").val().length == 0 || $("#brand").val().length == 0 || $("#image").val().length == 0 || $("#condition").val().length == 0) {
+    //if ($("#serialNumber").val().length == 0 || $("#brand").val().length == 0 || $("#image").val().length == 0 || $("#condition").val().length == 0) {
+    if ($("#serialNumber").val().length == 0 || $("#brand").val().length == 0 || $("#condition").val().length == 0) {
         alert("Todos los campos son obligatorios")
     } else {
 
@@ -90,17 +91,17 @@ function borrarBike(idElemento) {
 /*------------PUT-------------------*/
 function actualizarBike(idElemento) {
 
-    if ($("#serialNumber").val().length == 0 || $("#brand").val().length == 0 || $("#image").val().length == 0 || $("#condition").val().length == 0) {
-        alert("Todos los campos son obligatorios")
-    } else {
+//    if ($("#serialNumber").val().length == 0 || $("#brand").val().length == 0 || $("#image").val().length == 0 || $("#condition").val().length == 0) {
+//        alert("Todos los campos son obligatorios")
+//    } else {
         let elemento = {
             id: idElemento,
             serialNumber: $("#serialNumber").val(),
-            status: { id: +$("#select-status").val() },
+            status: $("#status").val(),
             brand: $("#brand").val(),
             image: $("#image").val(),
             condition: $("#condition").val(),
-            category: { id: +$("#select-category").val() },
+            category: $("#category").val()
         }
 
         console.log(elemento);
@@ -132,7 +133,7 @@ function actualizarBike(idElemento) {
             }
         });
     }
-}
+//}
 
 //Cargar datos para actualizar
 function cargarDatosBike(id) {
@@ -145,12 +146,13 @@ function cargarDatosBike(id) {
             console.log(response);
             var item = response;
 
-            
 
             $("#serialNumber").val(item.serialNumber);
+            $("#status").val(item.status);
             $("#brand").val(item.name);
             $("#image").val(item.brand);
             $("#condition").val(item.year);
+            $("#category").val(item.category);
             
         },
 
