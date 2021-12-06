@@ -2,7 +2,8 @@
 /*------------GET-------------------*/
 function getBike() {
     $.ajax({
-        url: "http://localhost:8080/api/bike/all",
+        //url: "http://localhost:8080/api/bike/all",
+        url: "http://152.67.33.106:8080/api/bike/all",
         type: "GET",
         datatype: "JSON",
         success: function (resultBike) {
@@ -46,7 +47,8 @@ function postBike() {
             contentType: "application/json; charset=utf-8",
             dataType: 'JSON',
             data: JSON.stringify(bike),
-            url: "http://localhost:8080/api/bike/save",
+            //url: "http://localhost:8080/api/bike/save",
+            url: "http://152.67.33.106:8080/api/bike/save",
             success: function (response) {
                 console.log(response);
                 console.log("Se guardo correctamente");
@@ -73,7 +75,8 @@ function borrarBike(idElemento) {
         {
             dataType: 'json',
             data: dataToSend,
-            url: "http://localhost:8080/api/bike/" + idElemento,
+            //url: "http://localhost:8080/api/bike/" + idElemento,
+            url: "http://152.67.33.106:8080/api/bike/" + idElemento,
             type: 'DELETE',
             contentType: "application/JSON",
             success: function (response) {
@@ -111,7 +114,8 @@ function actualizarBike(idElemento) {
             datatype: 'json',
             data: dataToSend,
             contentType: "application/JSON",
-            url: "http://localhost:8080/api/bike/update",
+            //url: "http://localhost:8080/api/bike/update",
+            url: "http://152.67.33.106:8080/api/bike/update",
             type: "PUT",
 
             success: function (response) {
@@ -136,7 +140,8 @@ function actualizarBike(idElemento) {
 function cargarDatosBike(id) {
     $.ajax({
         dataType: 'json',
-        url: "http://localhost:8080/api/bike/" + id,
+        //url: "http://localhost:8080/api/bike/" + id,
+        url: "http://152.67.33.106:8080/api/bike/" + id,
         type: 'GET',
 
         success: function (response) {

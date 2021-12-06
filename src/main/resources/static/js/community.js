@@ -1,7 +1,8 @@
 /*------------GET-------------------*/
 function getCommunity() {
     $.ajax({
-        url: "http://localhost:8080/api/community/all",
+        //url: "http://localhost:8080/api/community/all",
+        url: "http://152.67.33.106:8080/api/community/all",
         type: "GET",
         datatype: "JSON",
         success: function (resultCommunity) {
@@ -48,7 +49,8 @@ function postCommunity() {
             contentType: "application/json; charset=utf-8",
             dataType: 'JSON',
             data: JSON.stringify(community),
-            url: "http://localhost:8080/api/community/save",
+            //url: "http://localhost:8080/api/community/save",
+            url: "http://152.67.33.106:8080/api/community/save",
             success: function (response) {
                 console.log(response);
                 console.log("Se guardo correctamente");
@@ -75,7 +77,8 @@ function deleteCommunity(idElemento) {
             {
                 dataType: 'json',
                 data: dataToSend,
-                url: "http://localhost:8080/api/community/" + idElemento,
+                //url: "http://localhost:8080/api/community/" + idElemento,
+                url: "http://152.67.33.106:8080/api/community/" + idElemento,
                 type: 'DELETE',
                 contentType: "application/JSON",
                 success: function (response) {
@@ -113,7 +116,8 @@ function updateCommunity(idElemento) {
         datatype: 'json',
         data: dataToSend,
         contentType: "application/JSON",
-        url: "http://localhost:8080/api/community/update",
+        //url: "http://localhost:8080/api/community/update",
+        url: "http://152.67.33.106:8080/api/community/update",
         type: "PUT",
 
         success: function (response) {
@@ -139,7 +143,8 @@ function updateCommunity(idElemento) {
 function cargarDatosCommunity(id) {
     $.ajax({
         dataType: 'json',
-        url: "http://localhost:8080/api/community/" + id,
+        //url: "http://localhost:8080/api/community/" + id,
+        url: "http://152.67.33.106:8080/api/community/" + id,
         type: 'GET',
 
         success: function (response) {
