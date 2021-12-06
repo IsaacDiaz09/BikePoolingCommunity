@@ -18,41 +18,49 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CommunityService {
-    
+
     @Autowired
     private CommunityRepository repo;
 
-	public boolean deleteAll() {
-		return repo.deleteAll();
-	}
+    public boolean deleteAll() {
+        return repo.deleteAll();
+    }
 
-	public Optional<Community> getById(Integer id) {
-		return repo.getById(id);
-	}
+    public Optional<Community> getById(Integer id) {
+        return repo.getById(id);
+    }
 
-	public List<Community> getAll() {
-		return repo.getAll();
-	}
+    public List<Community> getAll() {
+        return repo.getAll();
+    }
 
-	public Community createCommunity(Community community) {		
-		return repo.save(community);
-	}
+    public Community createCommunity(Community community) {
+        return repo.save(community);
+    }
 
-	public Community updateCommunity(Community community) {
-		if (repo.getById(community.getIdCommunity()).isPresent()) {
-			Community communityUpdate = repo.getById(community.getIdCommunity()).get();
+    public Community updateCommunity(Community community) {
+        if (repo.getById(community.getIdCommunity()).isPresent()) {
+            Community communityUpdate = repo.getById(community.getIdCommunity()).get();
 
-			if (!Objects.isNull(community.getTypeCommunity())) {
-				communityUpdate.setTypeCommunity(community.getTypeCommunity());
+            if (!Objects.isNull(community.getIdCommunity())) {
+                communityUpdate.setIdCommunity(community.getIdCommunity());
+            }
+            if (!Objects.isNull(community.getNameCommunity())) {
+                communityUpdate.setNameCommunity(community.getNameCommunity());
+            }
+            if (!Objects.isNull(community.getNickCommunity())) {
+                communityUpdate.setNickCommunity(community.getNickCommunity());
+            }
+            if (!Objects.isNull(community.getSectorCommunity())) {
+				communityUpdate.setSectorCommunity(community.getSectorCommunity());
 			}
+            return repo.save(communityUpdate);
+        }
+        return new Community();
 
-			return repo.save(communityUpdate);
-		}
-		return new Community();
+    }
 
-	}
-
-	public boolean deleteCommunity(Integer id) {
-		return repo.delete(id);
-	}
+    public boolean deleteCommunity(Integer id) {
+        return repo.delete(id);
+    }
 }

@@ -28,10 +28,8 @@ public class Community implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCommunity;
-    
-    private String typeCommunity;
-    
-    
-                       
+    private String nickCommunity;
+    private String sectorCommunity;
+    private String nameCommunity;
 
 }
